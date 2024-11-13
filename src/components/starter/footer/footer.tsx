@@ -1,4 +1,4 @@
-import { component$, useStore } from '@builder.io/qwik';
+import {component$, useStore, useTask$} from '@builder.io/qwik';
 import {AccountLinks, CompanyLinks, CustomerSupportLinks, LegalLinks} from "~/components/starter/footer/footer-link";
 import {SocialIcons} from "~/components/starter/footer/footer-social-icons";
 import {Subscribe} from "~/components/starter/footer/footer-subscribe";
@@ -7,9 +7,9 @@ import styles from "./footer.module.css";
 export default component$(() => {
   const store = useStore({ isMobile: false });
 
-  // Assuming you have logic for detecting mobile breakpoint (similar to useBreakpointValue)
-  // This can be replaced with actual breakpoint logic
-  store.isMobile = typeof window !== 'undefined' ? window.innerWidth <= 1024 : false;
+  useTask$(() => {
+    store.isMobile = typeof window !== 'undefined' ? window.innerWidth <= 1024 : false;
+  });
 
   return (
       <footer class={`px-4 py-8 bg-gray-900 text-white ${styles.wrapper}`}>

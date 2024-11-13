@@ -23,18 +23,13 @@ type LinkListProps = QwikIntrinsicElements['div'] & {
 };
 
 export const LinksList = component$((props: LinkListProps) => {
-    const { links = [], heading, variant, onLinkClick$, ...rest } = props;
+    const { links = [], heading, variant, ...rest } = props;
 
     return (
         <div {...rest}>
             {heading ? (
                 heading.href ? (
-                    <a
-                        aria-label={heading.text}
-                        href={heading.href}
-                        onClick$={onLinkClick$}
-                        class="inline-flex"
-                    >
+                    <a aria-label={heading.text} href={heading.href} class="inline-flex">
                         <h2 class={`py-3 ${heading.styles ? heading.styles : ''}`}>
                             {heading.text}
                         </h2>
@@ -53,7 +48,7 @@ export const LinksList = component$((props: LinkListProps) => {
                     }`}
                 >
                     {links.map((link, i) => (
-                        <LinkListItem key={i} link={link} onLinkClick$={onLinkClick$} />
+                        <LinkListItem key={i} link={link} />
                     ))}
                 </ul>
             ) : null}
