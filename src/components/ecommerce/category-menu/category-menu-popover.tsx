@@ -21,7 +21,6 @@ export default component$<CategoryMenuPopoverProps>(({category}) => {
     const MAXIMUM_NUMBER_COLUMNS = 5
 
     const getCategories = $(async () => {
-        console.log('here')
         const {shopperProducts} = await getApiClients();
         return await shopperProducts.getCategory({
             parameters: {
@@ -72,7 +71,6 @@ export default component$<CategoryMenuPopoverProps>(({category}) => {
         }
     })
 
-    console.log(categoriesData)
     const columnLength = categories.value?.categories?.length || 2
     const gridClass = `grid grid-cols-${columnLength > MAXIMUM_NUMBER_COLUMNS ? MAXIMUM_NUMBER_COLUMNS : columnLength} gap-y-2`;
 

@@ -1,4 +1,5 @@
-import { component$, QwikIntrinsicElements } from '@builder.io/qwik';
+import { component$ } from '@builder.io/qwik';
+import type { QwikIntrinsicElements } from '@builder.io/qwik';
 import {LinkListItem} from "~/components/ecommerce/category-menu/links-list-item";
 
 export const LINK_LIST_VARIANTS = {
@@ -47,7 +48,7 @@ export const LinksList = component$((props: LinkListProps) => {
 
             {links.length > 0 ? (
                 <ul
-                    class={`list-none p-0 space-y-3 ${variant === LINK_LIST_VARIANTS.horizontal ? 'flex gap-3 flex-row' : ''} ${
+                    class={`list-none p-0 ${variant === LINK_LIST_VARIANTS.horizontal ? 'flex gap-3 flex-row' : ' space-y-3'} ${
                         variant === LINK_LIST_VARIANTS.vertical ? 'flex flex-col' : ''
                     }`}
                 >
