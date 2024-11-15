@@ -1,4 +1,5 @@
 import {component$, Resource, useResource$} from "@builder.io/qwik";
+import {Link} from "@builder.io/qwik-city";
 import {getApiClients} from "~/utils/commerce-api";
 import {CAT_MENU_DEFAULT_NAV_SSR_DEPTH, CAT_MENU_DEFAULT_ROOT_CATEGORY} from "~/constants";
 import CategoryMenu from "~/components/ecommerce/category-menu/category-menu";
@@ -20,9 +21,9 @@ export default component$(() => {
     <header class="px-8 sticky top-0 z-10 bg-white shadow-lg text-black">
       <div class="max-w-[75rem] mx-auto">
         <div class="flex items-center">
-          <a class="" href="/">
+          <Link href="/">
             <h2 class="text-[2rem] text-red-500">SYSTEMA</h2>
-          </a>
+          </Link>
           <Resource
               value={apiResource}
               onPending={() => <p>Loading...</p>}
@@ -38,9 +39,9 @@ export default component$(() => {
             />
           </div>
 
-          <a class="ml-4 text-black" href="/login">
+          <Link class="ml-4 text-black" href="/login">
             Login
-          </a>
+          </Link>
         </div>
       </div>
     </header>

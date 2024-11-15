@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import type { QwikIntrinsicElements } from '@builder.io/qwik';
+import {Link} from "@builder.io/qwik-city";
 import {LinkListItem} from "~/components/ecommerce/category-menu/links-list-item";
 
 export const LINK_LIST_VARIANTS = {
@@ -29,11 +30,11 @@ export const LinksList = component$((props: LinkListProps) => {
         <div {...rest}>
             {heading ? (
                 heading.href ? (
-                    <a aria-label={heading.text} href={heading.href} class="inline-flex">
+                    <Link aria-label={heading.text} href={heading.href} class="inline-flex">
                         <h2 class={`py-3 ${heading.styles ? heading.styles : ''}`}>
                             {heading.text}
                         </h2>
-                    </a>
+                    </Link>
                 ) : (
                     <h2 class={`${heading.styles ? heading.styles : ''}`}>
                         {heading.text}

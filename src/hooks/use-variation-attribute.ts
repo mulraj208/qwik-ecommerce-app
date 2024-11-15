@@ -26,7 +26,7 @@ const buildVariantValueHref = ({pathname, existingParams, newParams, productId, 
         updateSearchParams(allParams, newParams);
     }
 
-    return `${pathname}?${allParams.toString()}`;
+    return `/product/${pathname}?${allParams.toString()}`;
 };
 
 const isVariantValueOrderable = (product, variationParams) => {

@@ -43,7 +43,7 @@ export const ImageGallery = component$((props: ImageGalleryProps) => {
         <div class="flex flex-col">
             {heroImage && (
                 <div class="mb-2">
-                    <div class="aspect-square relative overflow-hidden rounded-lg">
+                    <div class="aspect-square relative overflow-hidden">
                         <img
                             src={heroImage.disBaseLink || heroImage.link}
                             alt={heroImage.alt || product.name || 'Image'}
@@ -75,7 +75,7 @@ export const ImageGallery = component$((props: ImageGalleryProps) => {
                                     loading={loadingStrategy}
                                     width={94}
                                     height={94}
-                                    class="object-cover"
+                                    class="object-cover aspect-square"
                                 />
                             </button>
                         </li>

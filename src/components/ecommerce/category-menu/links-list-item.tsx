@@ -1,8 +1,9 @@
 import { component$ } from '@builder.io/qwik';
-import type { Link } from './links-list';
+import {Link} from "@builder.io/qwik-city";
+import type { Link as LinkType } from './links-list';
 
 type LinkListItemProps = {
-    link: Link;
+    link: LinkType;
 };
 
 export const LinkListItem = component$((props: LinkListItemProps) => {
@@ -10,9 +11,9 @@ export const LinkListItem = component$((props: LinkListItemProps) => {
 
     return (
         <li class="list-none">
-            <a href={link.href} class="text-black text-md">
+            <Link href={link.href} class="text-black text-md">
                 {link.text}
-            </a>
+            </Link>
         </li>
     );
 });

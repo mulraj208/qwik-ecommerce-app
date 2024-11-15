@@ -1,4 +1,5 @@
 import {$, component$, useSignal, useTask$} from "@builder.io/qwik";
+import {Link} from "@builder.io/qwik-city";
 import {categoryUrlBuilder} from "~/utils/urls";
 import {Popover} from "~/components/ui";
 import {usePopover} from "@qwik-ui/headless";
@@ -83,9 +84,9 @@ export default component$<CategoryMenuPopoverProps>(({category}) => {
                     onMouseLeave$={async () => await hidePopover()}
                 >
                     <Popover.Trigger class="p-0 bg-transparent border-none " preventdefault:click>
-                        <a class="px-6 py-4 block text-lg text-black" href={categoryUrlBuilder(category)}>
+                        <Link class="px-6 py-4 block text-lg text-black" href={categoryUrlBuilder(category)}>
                             {category.name}
-                        </a>
+                        </Link>
                     </Popover.Trigger>
                     {categoriesData ? (
                         <Popover.Panel class="w-full !left-0 rounded-none pb-6">

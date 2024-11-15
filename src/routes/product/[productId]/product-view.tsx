@@ -17,7 +17,6 @@ export const ProductView = component$((props: ProductViewProps) => {
     // @ts-ignore
     const {basePrice, discountPrice} = getDisplayPrice(product);
     const isOutOfStock = derivedProduct.stockLevel === 0;
-    console.log(derivedProduct, derivedProduct.variationAttributes, {basePrice, discountPrice}, isOutOfStock);
 
     return (
         <div class="flex flex-col lg:flex-row gap-8 p-8 justify-center">

@@ -1,6 +1,7 @@
 import {component$, Resource, Slot, useResource$} from '@builder.io/qwik';
 import {categoryUrlBuilder} from '~/utils/urls';
 import {LuChevronRight} from "@qwikest/icons/lucide";
+import {Link} from "@builder.io/qwik-city";
 import {SkeletonText} from "~/components/ecommerce/skeleton-text";
 import {getApiClients} from "~/utils/commerce-api";
 
@@ -19,9 +20,9 @@ interface BreadcrumbLinkProps {
 
 export const BreadcrumbLink = component$(({href, text}: BreadcrumbLinkProps) => {
     return (
-        <a href={href} class="text-sm font-medium text-gray-900 hover:text-blue-600">
+        <Link href={href} class="text-sm font-medium text-gray-900 hover:text-blue-600">
             {text}
-        </a>
+        </Link>
     );
 });
 
