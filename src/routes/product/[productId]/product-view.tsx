@@ -19,8 +19,8 @@ export const ProductView = component$((props: ProductViewProps) => {
     const isOutOfStock = derivedProduct.stockLevel === 0;
 
     return (
-        <div class="flex flex-col lg:flex-row gap-8 p-8 justify-center">
-            <div class="h-auto w-[30rem]">
+        <div class="flex flex-col lg:flex-row gap-8 justify-center">
+            <div class="h-auto lg:w-[30rem]">
                 {product ? (
                     <ImageGallery
                         imageGroups={product.imageGroups || []}
@@ -62,7 +62,7 @@ export const ProductView = component$((props: ProductViewProps) => {
                 {/*/>*/}
 
                 {derivedProduct.showInventoryMessage ? (
-                    <p class="text-orange-600 font-semibold mb-8">
+                    <p class="text-orange-600 text-left font-semibold mb-8">
                         {derivedProduct.inventoryMessage}
                     </p>
                 ) : null}

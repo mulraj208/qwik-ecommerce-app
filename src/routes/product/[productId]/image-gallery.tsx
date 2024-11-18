@@ -50,7 +50,7 @@ export const ImageGallery = component$((props: ImageGalleryProps) => {
                             width={480}
                             height={480}
                             loading="eager"
-                            class="object-cover"
+                            class="object-cover w-full max-w-full"
                         />
                     </div>
                 </div>

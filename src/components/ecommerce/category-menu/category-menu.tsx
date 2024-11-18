@@ -10,7 +10,7 @@ export default component$<CategoryMenuProps>(({ categories }) => {
       <div class="flex-1">
         <nav>
           <div class="flex min-w-[20rem] pl-4 items-start">
-            <ul class="flex items-center">
+            <ul class="flex flex-wrap items-center">
               {categories.map((category) => <CategoryMenuPopover key={category.name} category={category} />)}
             </ul>
           </div>
