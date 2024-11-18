@@ -38,6 +38,7 @@
     "@types/node": "20.14.11",
     "@typescript-eslint/eslint-plugin": "7.16.1",
     "@typescript-eslint/parser": "7.16.1",
+    "@unpic/core": "0.0.52",
     "autoprefixer": "^10.4.19",
     "class-variance-authority": "^0.7.0",
     "eslint": "8.57.0",
