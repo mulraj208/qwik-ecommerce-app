@@ -58,10 +58,10 @@ export function useVariationAttributes(product: CommerceSDK.Product$0 | undefine
                     ...value,
                     image: getVariantValueSwatch(product, value),
                     href: buildVariantValueHref({
-                        pathname: product?.id,
+                        pathname: product.id,
                         existingParams,
                         newParams: params,
-                        productId: product?.id,
+                        productId: product.id,
                         isProductPartOfSet,
                     }),
                     orderable: isVariantValueOrderable(product, params),

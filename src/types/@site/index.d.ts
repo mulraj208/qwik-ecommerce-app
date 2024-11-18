@@ -1,4 +1,4 @@
-import { SetupServerApi } from 'msw/node'
+import type { SetupServerApi } from 'msw/node'
 
 declare namespace SitePreferencesApp {
   type Global = {

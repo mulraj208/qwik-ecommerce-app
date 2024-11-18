@@ -1,4 +1,4 @@
-import enUS from '../../../../translations/en-US.json'
+import type enUS from '../../../../translations/en-US.json'
 
 // In this example, english has the most support, so it has all the keys
 export type IntlMessageIDs = keyof typeof enUS

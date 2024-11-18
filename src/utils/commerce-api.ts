@@ -1,8 +1,7 @@
-import pkg from 'commerce-sdk-isomorphic';
+import {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo} from 'commerce-sdk-isomorphic';
 import config from '~/config/dw'
 import {getAuthInstance} from "~/auth";
 import {authConfig} from "~/auth/auth-config";
-const {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo} = pkg;
 
 export const getApiClients = async () => {
     const auth = getAuthInstance(authConfig);

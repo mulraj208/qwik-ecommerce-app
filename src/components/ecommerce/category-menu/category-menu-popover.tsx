@@ -47,7 +47,7 @@ export default component$<CategoryMenuPopoverProps>(({category}) => {
         // }
     });
 
-    const categoriesData = categories.value?.categories?.map((item: CommerceSDK.Category) => {
+    const categoriesData = categories.value?.categories.map((item: CommerceSDK.Category) => {
         const {id, name} = item
         const items = item['categories'] as Array<CommerceSDK.Category>
         const heading = {
@@ -55,6 +55,7 @@ export default component$<CategoryMenuPopoverProps>(({category}) => {
             text: name,
             styles: 'font-bold text-black text-lg'
         }
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         const links = items
             ? items.map((item: CommerceSDK.Category) => {
                 const {name} = item
@@ -72,7 +73,7 @@ export default component$<CategoryMenuPopoverProps>(({category}) => {
         }
     })
 
-    const columnLength = categories.value?.categories?.length || 2
+    const columnLength = categories.value?.categories.length || 2
     const gridClass = `grid grid-cols-${columnLength > MAXIMUM_NUMBER_COLUMNS ? MAXIMUM_NUMBER_COLUMNS : columnLength} gap-y-2`;
 
     return (

@@ -23,6 +23,7 @@ export const ProductView = component$((props: ProductViewProps) => {
             <div class="h-auto lg:w-[30rem]">
                 {product ? (
                     <ImageGallery
+                        // @ts-ignore
                         imageGroups={product.imageGroups || []}
                         selectedVariationAttributes={derivedProduct.variationParams}
                         product={product}
@@ -47,6 +48,7 @@ export const ProductView = component$((props: ProductViewProps) => {
                             <SwatchGroup
                                 key={variationAttribute.id}
                                 name={variationAttribute.name}
+                                // @ts-ignore
                                 selectedValue={variationAttribute.selectedValue}
                                 values={variationAttribute.values || []}
                             />

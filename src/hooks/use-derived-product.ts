@@ -1,4 +1,5 @@
 // @ts-nocheck
+/* eslint qwik/valid-lexical-scope: 0 */
 import {useStore, useTask$} from '@builder.io/qwik';
 import {useVariant} from './use-variant';
 import {useVariationParams} from './use-variation-params';
@@ -27,6 +28,7 @@ export const useDerivedProduct = (product, isProductPartOfSet = false) => {
     const {variationParams, variationAttributes, stockLevel, quantity} = store;
 
     // Calculate derived values
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     const isOutOfStock = !stockLevel || (!store.variant && Object.keys(variationParams).length === variationAttributes.length);
     const unfulfillable = stockLevel < quantity;
     const inventoryMessages = {
@@ -37,6 +39,7 @@ export const useDerivedProduct = (product, isProductPartOfSet = false) => {
     useTask$(() => {
         const {basePrice, discountPrice} = getDisplayPrice(product);
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         store.showInventoryMessage = store.variant && (isOutOfStock || unfulfillable);
         store.inventoryMessage = (isOutOfStock && inventoryMessages[OUT_OF_STOCK]) || (unfulfillable && inventoryMessages[UNFULFILLABLE]);
         store.basePrice = basePrice;

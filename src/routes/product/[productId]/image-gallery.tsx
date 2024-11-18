@@ -24,18 +24,20 @@ export const ImageGallery = component$((props: ImageGalleryProps) => {
 
     // Replace useMemo with Qwik's useTask$ to calculate values reactively
     useTask$(() => {
+        // @ts-ignore
         store.heroImageGroup = findImageGroupBy(imageGroups, {
             viewType: ImageViewType.LARGE,
             selectedVariationAttributes,
         });
 
+        // @ts-ignore
         store.thumbnailImageGroup = findImageGroupBy(imageGroups, {
             viewType: ImageViewType.SMALL,
             selectedVariationAttributes,
         });
     });
 
-    const heroImage = store.heroImageGroup?.images?.[store.selectedIndex];
+    const heroImage = store.heroImageGroup?.images[store.selectedIndex];
     const thumbnailImages = store.thumbnailImageGroup?.images || [];
     const loadingStrategy = isLazy ? 'lazy' : 'eager';
 

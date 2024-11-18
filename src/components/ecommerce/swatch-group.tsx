@@ -9,7 +9,7 @@ type SwatchGroupProps = {
 
 export const SwatchGroup = component$((props: SwatchGroupProps) => {
     const {name, values, selectedValue} = props;
-    const defaultValue = selectedValue?.value || '';
+    const defaultValue = selectedValue.value || '';
     const selectedValueSignal = useSignal(defaultValue);
 
     // const handleSelect = (value: string) => {
@@ -21,7 +21,7 @@ export const SwatchGroup = component$((props: SwatchGroupProps) => {
             <div class="flex items-center max-w-lg">
                 <span class="font-semibold text-lg">
                     {name}
-                    {selectedValue?.name ? `: ${selectedValue.name}` : ''}
+                    {selectedValue.name ? `: ${selectedValue.name}` : ''}
                 </span>
             </div>
 
