@@ -16,8 +16,6 @@ export const SwatchGroup = component$((props: SwatchGroupProps) => {
     //     selectedValueSignal.value = value;
     // };
 
-    console.log('asdfsdf')
-
     return (
         <div class="flex flex-col gap-2">
             <div class="flex items-center max-w-lg">

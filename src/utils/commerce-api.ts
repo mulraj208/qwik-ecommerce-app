@@ -1,4 +1,7 @@
-import {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo} from 'commerce-sdk-isomorphic';
+// import {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo} from 'commerce-sdk-isomorphic';
+import pkg from 'commerce-sdk-isomorphic';
+const {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo} = pkg;
+
 import config from '~/config/dw'
 import {getAuthInstance} from "~/auth";
 import {authConfig} from "~/auth/auth-config";
