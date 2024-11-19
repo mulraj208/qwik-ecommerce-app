@@ -7,13 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      '@salesforce/commerce-sdk-react':
-        specifier: 3.1.0
-        version: 3.1.0(@tanstack/react-query@4.36.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-helmet@6.1.0(react@18.3.1))(react@18.3.1)
-      commerce-sdk-isomorphic:
-        specifier: ^3.0.0
-        version: 3.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
     devDependencies:
       '@builder.io/qwik':
         specifier: ^1.9.1
@@ -33,6 +26,9 @@ importers:
       '@qwikest/icons':
         specifier: ^0.0.13
         version: 0.0.13(@builder.io/qwik@1.9.1(@types/node@20.14.11)(terser@5.36.0))
+      '@salesforce/commerce-sdk-react':
+        specifier: 3.1.0
+        version: 3.1.0(@tanstack/react-query@4.36.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react-helmet@6.1.0(react@18.3.1))(react@18.3.1)
       '@types/eslint':
         specifier: 8.56.10
         version: 8.56.10
@@ -54,6 +50,9 @@ importers:
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
+      commerce-sdk-isomorphic:
+        specifier: ^3.0.0
+        version: 3.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       esbuild:
         specifier: 0.24.0
         version: 0.24.0
