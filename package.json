@@ -13,6 +13,7 @@
   "type": "module",
   "scripts": {
     "build": "qwik build",
+    "build-sdk": "esbuild node_modules/commerce-sdk-isomorphic/lib/index.esm.js --bundle --outfile=node_modules/commerce-sdk-isomorphic/index-test.esm.js --format=esm --platform=node",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.server": "vite build -c adapters/vercel-edge/vite.config.ts",
@@ -41,6 +42,7 @@
     "@unpic/core": "0.0.52",
     "autoprefixer": "^10.4.19",
     "class-variance-authority": "^0.7.0",
+    "esbuild": "0.24.0",
     "eslint": "8.57.0",
     "eslint-plugin-qwik": "^1.9.1",
     "nx": "20.0.12",

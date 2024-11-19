@@ -1,6 +1,6 @@
-// import {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo} from 'commerce-sdk-isomorphic';
-import pkg from 'commerce-sdk-isomorphic';
-const {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo} = pkg;
+import pkg from 'commerce-sdk-isomorphic/lib/index.cjs.js';
+// @ts-ignore
+const {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo} = pkg.default || pkg;
 
 import config from '~/config/dw'
 import {getAuthInstance} from "~/auth";
