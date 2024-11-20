@@ -1,12 +1,19 @@
 import pkg from 'commerce-sdk-isomorphic/lib/index.cjs.js';
 // @ts-ignore
-const {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo, helpers} = pkg.default || pkg;
+const {ShopperBaskets, ShopperContexts, ShopperCustomers, ShopperExperience, ShopperGiftCertificates, ShopperLogin, ShopperOrders, ShopperProducts, ShopperPromotions, ShopperSearch, ShopperSeo} = pkg.default || pkg;
 
 import config from '~/config/dw'
+import {getAuthInstance} from "~/auth";
+import {authConfig} from "~/auth/auth-config";
 
 export const getApiClients = async () => {
+    const auth = getAuthInstance(authConfig);
+    const { access_token } = await auth.ready();
     const commerceApiConfig = {
         proxy: `${process.env.NEXT_PUBLIC_APP_ORIGIN}/mobify/proxy/api`,
+        headers: {
+            Authorization: `Bearer ${access_token}`
+        },
         parameters: {
             clientId: config.CLIENT_ID,
             organizationId: config.ORGANIZATION_ID,
@@ -18,28 +25,17 @@ export const getApiClients = async () => {
         throwOnBadResponse: true
     }
 
-    // @ts-ignore
-    const {access_token} = await helpers.loginGuestUser(
-        new ShopperLogin(commerceApiConfig),
-        {redirectURI: `${commerceApiConfig.proxy}/callback`}
-    )
-
-    const configWithAccessToken = {
-        ...config,
-        headers: {authorization: `Bearer ${access_token}`},
-    }
-
     return {
-        shopperBaskets: new ShopperBaskets(configWithAccessToken),
-        shopperContexts: new ShopperContexts(configWithAccessToken),
-        shopperCustomers: new ShopperCustomers(configWithAccessToken),
-        shopperExperience: new ShopperExperience(configWithAccessToken),
-        shopperGiftCertificates: new ShopperGiftCertificates(configWithAccessToken),
-        shopperLogin: new ShopperLogin(configWithAccessToken),
-        shopperOrders: new ShopperOrders(configWithAccessToken),
-        shopperProducts: new ShopperProducts(configWithAccessToken),
-        shopperPromotions: new ShopperPromotions(configWithAccessToken),
-        shopperSearch: new ShopperSearch(configWithAccessToken),
-        shopperSeo: new ShopperSeo(configWithAccessToken)
+        shopperBaskets: new ShopperBaskets(commerceApiConfig),
+        shopperContexts: new ShopperContexts(commerceApiConfig),
+        shopperCustomers: new ShopperCustomers(commerceApiConfig),
+        shopperExperience: new ShopperExperience(commerceApiConfig),
+        shopperGiftCertificates: new ShopperGiftCertificates(commerceApiConfig),
+        shopperLogin: new ShopperLogin(commerceApiConfig),
+        shopperOrders: new ShopperOrders(commerceApiConfig),
+        shopperProducts: new ShopperProducts(commerceApiConfig),
+        shopperPromotions: new ShopperPromotions(commerceApiConfig),
+        shopperSearch: new ShopperSearch(commerceApiConfig),
+        shopperSeo: new ShopperSeo(commerceApiConfig)
     }
 }

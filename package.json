@@ -61,5 +61,10 @@
     "vite-plugin-node-polyfills": "0.22.0",
     "vite-tsconfig-paths": "^4.2.1"
   },
-  "nx": {}
+  "nx": {},
+  "pnpm": {
+    "patchedDependencies": {
+      "@salesforce/commerce-sdk-react": "patches/@salesforce__commerce-sdk-react.patch"
+    }
+  }
 }

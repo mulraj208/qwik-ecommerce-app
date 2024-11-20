@@ -1,0 +1,15 @@
+diff --git a/utils.js b/utils.js
+index 20f72a489dadc888054a9f259abad5b464a52e9b..87c955241b4b47fbd850261cedd50787f4aa9f3e 100644
+--- a/utils.js
++++ b/utils.js
+@@ -44,8 +44,8 @@ const getParentOrigin = () => {
+     // location.ancestorOrigins[0] will provide the parent host url, but it only works for Chrome and Safari.
+     // Firefox does not have this field. document.referrer is common use for parent url, but it could be less reliable.
+     // It is best to use it a fallback option for Firefox
+-    if (window.location.ancestorOrigins) return window.location.ancestorOrigins[0];
+-    if (document.referrer) return new URL(document.referrer).origin;
++    if (window && window.location && window.location.ancestorOrigins) return window.location.ancestorOrigins[0];
++    if (typeof document !== "undefined" && document.referrer) return new URL(document.referrer).origin;
+   }
+ };
+ 
