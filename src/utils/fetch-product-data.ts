@@ -1,6 +1,7 @@
 import {getApiClients} from "./commerce-api";
+import {server$} from "@builder.io/qwik-city";
 
-export async function fetchProductData(productId: string) {
+export const fetchProductData = server$(async (productId: string) => {
     try {
         const {shopperProducts} = await getApiClients();
 
@@ -13,4 +14,4 @@ export async function fetchProductData(productId: string) {
     } catch (error) {
         console.error('Failed to fetch product data:', error);
     }
-}
+});

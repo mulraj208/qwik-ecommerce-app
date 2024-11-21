@@ -1,5 +1,5 @@
 import {component$, Resource, useResource$} from "@builder.io/qwik";
-import {Link} from "@builder.io/qwik-city";
+import {Link, server$} from "@builder.io/qwik-city";
 import { LuMenu } from "@qwikest/icons/lucide";
 import {getApiClients} from "~/utils/commerce-api";
 import {CAT_MENU_DEFAULT_NAV_SSR_DEPTH, CAT_MENU_DEFAULT_ROOT_CATEGORY} from "~/constants";
@@ -9,13 +9,17 @@ export interface levelZeroCategoriesQuery {
   categories: Array<CommerceSDK.Category>
 }
 
+const getCategories = server$(async () => {
+  const {shopperProducts} = await getApiClients();
+
+  return await shopperProducts.getCategory({
+    parameters: {id: CAT_MENU_DEFAULT_ROOT_CATEGORY, levels: CAT_MENU_DEFAULT_NAV_SSR_DEPTH}
+  }) as unknown as levelZeroCategoriesQuery;
+})
+
 export default component$(() => {
   const apiResource = useResource$(async () => {
-    const {shopperProducts} = await getApiClients();
-
-    return await shopperProducts.getCategory({
-      parameters: {id: CAT_MENU_DEFAULT_ROOT_CATEGORY, levels: CAT_MENU_DEFAULT_NAV_SSR_DEPTH}
-    }) as unknown as levelZeroCategoriesQuery;
+    return await getCategories() as unknown as levelZeroCategoriesQuery;
   });
 
   return (

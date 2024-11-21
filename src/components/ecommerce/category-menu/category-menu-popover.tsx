@@ -1,5 +1,5 @@
-import {$, component$, useSignal, useTask$} from "@builder.io/qwik";
-import {Link} from "@builder.io/qwik-city";
+import {component$, useSignal, useTask$} from "@builder.io/qwik";
+import {Link, server$} from "@builder.io/qwik-city";
 import {categoryUrlBuilder} from "~/utils/urls";
 import {Popover} from "~/components/ui";
 import {usePopover} from "@qwik-ui/headless";
@@ -14,25 +14,27 @@ interface CategoriesProps {
     categories: Array<CommerceSDK.Category> | undefined
 }
 
+
+
+const getCategories = server$(async (id: string) => {
+    const {shopperProducts} = await getApiClients();
+    return await shopperProducts.getCategory({
+        parameters: {
+            id,
+            levels: 2
+        }
+    }) as unknown as CategoriesProps;
+});
+
 export default component$<CategoryMenuPopoverProps>(({category}) => {
     const popoverId = `programmatic-id-${category.name}`;
     const anchorRef = useSignal<HTMLElement | undefined>();
     const {showPopover, hidePopover} = usePopover(popoverId);
     const categories = useSignal<CategoriesProps>();
-    const MAXIMUM_NUMBER_COLUMNS = 5
-
-    const getCategories = $(async () => {
-        const {shopperProducts} = await getApiClients();
-        return await shopperProducts.getCategory({
-            parameters: {
-                id: category.id,
-                levels: 2
-            }
-        }) as unknown as CategoriesProps;
-    });
+    const MAXIMUM_NUMBER_COLUMNS = 5;
 
     useTask$(async () => {
-        categories.value = await getCategories()
+        categories.value = await getCategories(category.id)
         // // Ensure the task runs only on the client side
         // if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
         //     requestIdleCallback(async () => {

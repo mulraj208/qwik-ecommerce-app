@@ -1,7 +1,7 @@
 import {component$, Resource, Slot, useResource$} from '@builder.io/qwik';
 import {categoryUrlBuilder} from '~/utils/urls';
 import {LuChevronRight} from "@qwikest/icons/lucide";
-import {Link} from "@builder.io/qwik-city";
+import {Link, server$} from "@builder.io/qwik-city";
 import {SkeletonText} from "~/components/ecommerce/skeleton-text";
 import {getApiClients} from "~/utils/commerce-api";
 
@@ -30,6 +30,12 @@ type BreadcrumbProps = {
     product?: CommerceSDK.Product$0;
 };
 
+const getCategories = server$(async (id: string) => {
+    const {shopperProducts} = await getApiClients();
+
+    return await shopperProducts.getCategory({ parameters: { id, levels: 1 } });
+})
+
 export const Breadcrumbs = component$((props: BreadcrumbProps) => {
     const {product} = props;
 
@@ -38,11 +44,7 @@ export const Breadcrumbs = component$((props: BreadcrumbProps) => {
 
         if (!product?.primaryCategoryId) return null;
 
-        const {shopperProducts} = await getApiClients();
-
-        return await shopperProducts.getCategory({
-            parameters: {id: product.primaryCategoryId, levels: 1}
-        });
+        return await getCategories(product.primaryCategoryId);
     });
 
     return (
