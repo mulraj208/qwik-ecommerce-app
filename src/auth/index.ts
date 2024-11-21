@@ -26,7 +26,7 @@ function optionsChanged(newOptions: AuthConfig): boolean {
 export function getAuthInstance(newOptions: AuthConfig): Auth {
     if (!authInstance || optionsChanged(newOptions)) {
         // @ts-ignore - ESM and CommonJS Compatibility Issues while using vite
-        authInstance = new ClassAuth.default(newOptions);
+        authInstance = new ClassAuth(newOptions);
         cachedOptions = { ...newOptions }; // Cache the new options for future comparison
     }
 
