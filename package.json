@@ -13,7 +13,6 @@
   "type": "module",
   "scripts": {
     "build": "qwik build",
-    "build-sdk": "esbuild node_modules/commerce-sdk-isomorphic/lib/index.esm.js --bundle --outfile=node_modules/commerce-sdk-isomorphic/index-test.esm.js --format=esm --platform=node",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
     "build.server": "vite build -c adapters/vercel-edge/vite.config.ts",
