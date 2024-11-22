@@ -1,16 +1,12 @@
-import {getApiClients} from "./commerce-api";
 import {server$} from "@builder.io/qwik-city";
 
 export const fetchProductData = server$(async (productId: string) => {
     try {
-        const {shopperProducts} = await getApiClients();
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ORIGIN}/api/commerce-sdk-react/product?productId=${productId}`);
+        const data = await response.json();
 
-        return await shopperProducts.getProduct({
-            parameters: {
-                id: productId,
-                allImages: true
-            }
-        });
+        // @ts-ignore
+        return data.data;
     } catch (error) {
         console.error('Failed to fetch product data:', error);
     }

@@ -3,7 +3,6 @@ import {Link, server$} from "@builder.io/qwik-city";
 import {categoryUrlBuilder} from "~/utils/urls";
 import {Popover} from "~/components/ui";
 import {usePopover} from "@qwik-ui/headless";
-import {getApiClients} from "~/utils/commerce-api";
 import LinksList from "~/components/ecommerce/category-menu/links-list";
 
 interface CategoryMenuPopoverProps {
@@ -14,16 +13,11 @@ interface CategoriesProps {
     categories: Array<CommerceSDK.Category> | undefined
 }
 
-
-
 const getCategories = server$(async (id: string) => {
-    const {shopperProducts} = await getApiClients();
-    return await shopperProducts.getCategory({
-        parameters: {
-            id,
-            levels: 2
-        }
-    }) as unknown as CategoriesProps;
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ORIGIN}/api/commerce-sdk-react/category?id=${id}&levels=${2}`);
+    const data = await response.json();
+
+    return data.data as unknown as CategoriesProps;
 });
 
 export default component$<CategoryMenuPopoverProps>(({category}) => {

@@ -1,27 +1,19 @@
 import {component$, Resource, useResource$} from "@builder.io/qwik";
-import {Link, server$} from "@builder.io/qwik-city";
+import {Link} from "@builder.io/qwik-city";
 import { LuMenu } from "@qwikest/icons/lucide";
-import {getApiClients} from "~/utils/commerce-api";
 import {CAT_MENU_DEFAULT_NAV_SSR_DEPTH, CAT_MENU_DEFAULT_ROOT_CATEGORY} from "~/constants";
 import CategoryMenu from "~/components/ecommerce/category-menu/category-menu";
-import {onClient} from "@salesforce/commerce-sdk-react/utils";
 
 export interface levelZeroCategoriesQuery {
   categories: Array<CommerceSDK.Category>
 }
 
-const getCategories = server$(async () => {
-  const {shopperProducts} = await getApiClients();
-
-  return await shopperProducts.getCategory({
-    parameters: {id: CAT_MENU_DEFAULT_ROOT_CATEGORY, levels: CAT_MENU_DEFAULT_NAV_SSR_DEPTH}
-  }) as unknown as levelZeroCategoriesQuery;
-})
-
 export default component$(() => {
   const apiResource = useResource$(async () => {
-    console.log('@@#@#@#@#@#@#', onClient());
-    return await getCategories() as unknown as levelZeroCategoriesQuery;
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ORIGIN}/api/commerce-sdk-react/category?id=${CAT_MENU_DEFAULT_ROOT_CATEGORY}&levels=${CAT_MENU_DEFAULT_NAV_SSR_DEPTH}`);
+    const data = await response.json();
+
+    return data.data as unknown as levelZeroCategoriesQuery;
   });
 
   return (
