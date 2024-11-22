@@ -1,8 +1,9 @@
 import {server$} from "@builder.io/qwik-city";
+import config from '~/config/dw';
 
 export const fetchProductData = server$(async (productId: string) => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_ORIGIN}/api/commerce-sdk-react/product?productId=${productId}`);
+        const response = await fetch(`${config.PUBLIC_API_ORIGIN}/api/commerce-sdk-react/product?productId=${productId}`);
         const data = await response.json();
 
         // @ts-ignore

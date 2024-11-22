@@ -15,5 +15,6 @@ export default {
     EXTERNAL_DOMAIN_NAME: "pwa-kit-poc.mulrajdev.com",
     MOBIFY_PROPERTY_ID: "mobify-storefront.com",
     API_COMMERCE_CLOUD: "kv7kzm78.api.commercecloud.salesforce.com",
-    DX_COMMERCE_CLOUD: "zzuz-008.dx.commercecloud.salesforce.com"
+    DX_COMMERCE_CLOUD: "zzuz-008.dx.commercecloud.salesforce.com",
+    PUBLIC_API_ORIGIN: "https://next-js-pwa-kit.vercel.app"
 }

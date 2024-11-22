@@ -4,6 +4,7 @@ import {categoryUrlBuilder} from "~/utils/urls";
 import {Popover} from "~/components/ui";
 import {usePopover} from "@qwik-ui/headless";
 import LinksList from "~/components/ecommerce/category-menu/links-list";
+import config from '~/config/dw';
 
 interface CategoryMenuPopoverProps {
     category: CommerceSDK.Category
@@ -14,7 +15,7 @@ interface CategoriesProps {
 }
 
 const getCategories = server$(async (id: string) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ORIGIN}/api/commerce-sdk-react/category?id=${id}&levels=${2}`);
+    const response = await fetch(`${config.PUBLIC_API_ORIGIN}/api/commerce-sdk-react/category?id=${id}&levels=${2}`);
     const data = await response.json();
 
     return data.data as unknown as CategoriesProps;

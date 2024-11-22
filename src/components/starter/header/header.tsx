@@ -3,6 +3,7 @@ import {Link} from "@builder.io/qwik-city";
 import { LuMenu } from "@qwikest/icons/lucide";
 import {CAT_MENU_DEFAULT_NAV_SSR_DEPTH, CAT_MENU_DEFAULT_ROOT_CATEGORY} from "~/constants";
 import CategoryMenu from "~/components/ecommerce/category-menu/category-menu";
+import config from "~/config/dw";
 
 export interface levelZeroCategoriesQuery {
   categories: Array<CommerceSDK.Category>
@@ -10,7 +11,7 @@ export interface levelZeroCategoriesQuery {
 
 export default component$(() => {
   const apiResource = useResource$(async () => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ORIGIN}/api/commerce-sdk-react/category?id=${CAT_MENU_DEFAULT_ROOT_CATEGORY}&levels=${CAT_MENU_DEFAULT_NAV_SSR_DEPTH}`);
+    const response = await fetch(`${config.PUBLIC_API_ORIGIN}/api/commerce-sdk-react/category?id=${CAT_MENU_DEFAULT_ROOT_CATEGORY}&levels=${CAT_MENU_DEFAULT_NAV_SSR_DEPTH}`);
     const data = await response.json();
 
     return data.data as unknown as levelZeroCategoriesQuery;

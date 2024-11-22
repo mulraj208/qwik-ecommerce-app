@@ -3,6 +3,7 @@ import {categoryUrlBuilder} from '~/utils/urls';
 import {LuChevronRight} from "@qwikest/icons/lucide";
 import {Link, server$} from "@builder.io/qwik-city";
 import {SkeletonText} from "~/components/ecommerce/skeleton-text";
+import config from "~/config/dw";
 
 export const BreadcrumbRoot = component$(() => {
     return (
@@ -30,7 +31,7 @@ type BreadcrumbProps = {
 };
 
 const getCategories = server$(async (id: string) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_ORIGIN}/api/commerce-sdk-react/category?id=${id}&levels=${1}`);
+    const response = await fetch(`${config.PUBLIC_API_ORIGIN}/api/commerce-sdk-react/category?id=${id}&levels=${1}`);
 
     return await response.json();
 });
