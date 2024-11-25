@@ -1,4 +1,5 @@
 import { component$, useStore, useTask$ } from '@builder.io/qwik';
+import { Image } from "@unpic/qwik";
 import { findImageGroupBy } from '~/utils/image-groups-utils';
 
 type ImageGalleryProps = {
@@ -46,12 +47,12 @@ export const ImageGallery = component$((props: ImageGalleryProps) => {
             {heroImage && (
                 <div class="mb-2">
                     <div class="aspect-square relative overflow-hidden">
-                        <img
+                        <Image
                             src={heroImage.disBaseLink || heroImage.link}
                             alt={heroImage.alt || product.name || 'Image'}
                             width={480}
                             height={480}
-                            loading="eager"
+                            priority={true}
                             class="object-cover w-full max-w-full"
                         />
                     </div>

@@ -41,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "7.16.1",
     "@typescript-eslint/parser": "7.16.1",
     "@unpic/core": "0.0.52",
+    "@unpic/qwik": "0.0.46",
     "autoprefixer": "^10.4.19",
     "class-variance-authority": "^0.7.0",
     "commerce-sdk-isomorphic": "^3.0.0",

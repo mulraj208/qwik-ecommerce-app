@@ -47,6 +47,9 @@ importers:
       '@unpic/core':
         specifier: 0.0.52
         version: 0.0.52
+      '@unpic/qwik':
+        specifier: 0.0.46
+        version: 0.0.46(@builder.io/qwik@1.9.1(@types/node@20.14.11)(terser@5.36.0))
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.20(postcss@8.4.47)
@@ -2585,6 +2588,12 @@ packages:
 
   '@unpic/core@0.0.52':
     resolution: {integrity: sha512-XRX0ePG0nH/K9x/coCQwFzSzg66INBNgPZR2FeSis6BHyxw3sBjL4KDzYse6d/Zx0F3APWsWkK2htaGRznjHMw==}
+
+  '@unpic/qwik@0.0.46':
+    resolution: {integrity: sha512-Nki7Y9uKwVUJv6A2IY3PjOz2Ma0s7lcpIMK7s8lGEtqvXzxdV2yomWWvePI8oZZXdZnwWFjy8/t2G9UqXeZIsA==}
+    engines: {node: '>=16.8.0 <18.0.0 || >=18.11'}
+    peerDependencies:
+      '@builder.io/qwik': '*'
 
   '@vanilla-extract/babel-plugin-debug-ids@1.1.0':
     resolution: {integrity: sha512-Zy9bKjaL2P5zsrFYQJ8IjWGlFODmZrpvFmjFE0Zv8om55Pz1JtpJtL6DvlxlWUxbVaP1HKCqsmEfFOZN8fX/ZQ==}
@@ -11354,6 +11363,10 @@ snapshots:
   '@unpic/core@0.0.52':
     dependencies:
       unpic: 3.20.0
+
+  '@unpic/qwik@0.0.46(@builder.io/qwik@1.9.1(@types/node@20.14.11)(terser@5.36.0))':
+    dependencies:
+      '@builder.io/qwik': 1.9.1(@types/node@20.14.11)(terser@5.36.0)
 
   '@vanilla-extract/babel-plugin-debug-ids@1.1.0':
     dependencies:
