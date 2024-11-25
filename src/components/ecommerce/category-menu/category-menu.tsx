@@ -21,14 +21,16 @@ export default component$<CategoryMenuProps>(() => {
           value={apiResource}
           onPending={() => <p>Loading...</p>}
           onResolved={({categories}) => (
-              <div class="flex-1">
-                  <nav>
-                      <div class="flex min-w-[20rem] pl-4 items-start">
-                          <ul class="flex flex-wrap items-center">
-                              {categories.map((category) => <CategoryMenuPopover key={category.name} category={category}/>)}
-                          </ul>
-                      </div>
-                  </nav>
+              <div class="hidden lg:flex">
+                  <div class="flex-1">
+                      <nav>
+                          <div class="flex min-w-[20rem] pl-4 items-start">
+                              <ul class="flex flex-wrap items-center">
+                                  {categories.map((category) => <CategoryMenuPopover key={category.name} category={category}/>)}
+                              </ul>
+                          </div>
+                      </nav>
+                  </div>
               </div>
           )}
           onRejected={(error) => <p>Error: {error.message}</p>}
