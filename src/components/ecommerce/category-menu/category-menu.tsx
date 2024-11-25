@@ -8,7 +8,7 @@ interface CategoryMenuProps {}
 
 export default component$<CategoryMenuProps>(() => {
     const apiResource = useResource$(async () => {
-        await (new Promise((res) => setTimeout(() => res(''), 3000)));
+        // await (new Promise((res) => setTimeout(() => res(''), 3000)));
 
         const response = await fetch(`${config.PUBLIC_API_ORIGIN}/api/commerce-sdk-react/category?id=${CAT_MENU_DEFAULT_ROOT_CATEGORY}&levels=${CAT_MENU_DEFAULT_NAV_SSR_DEPTH}`);
         const data = await response.json();
