@@ -53,6 +53,7 @@ export const ImageGallery = component$((props: ImageGalleryProps) => {
                             width={480}
                             height={480}
                             priority={true}
+                            fetchpriority="high"
                             class="object-cover w-full max-w-full"
                         />
                     </div>
