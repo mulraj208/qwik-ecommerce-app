@@ -10,7 +10,12 @@ import styles from "./styles.css?inline";
 import config from "~/config/dw";
 import {CAT_MENU_DEFAULT_NAV_SSR_DEPTH, CAT_MENU_DEFAULT_ROOT_CATEGORY} from "~/constants";
 
-export const onGet: RequestHandler = async ({cacheControl}) => {
+export const onGet: RequestHandler = async ({cacheControl, request}) => {
+    if (request.url.includes('/invalidate')) {
+        // Bypass any logic for invalidation requests
+        return;
+    }
+
     // Control caching for this request for best performance and to reduce hosting costs:
     // https://qwik.dev/docs/caching/
     const cacheConfig = {
