@@ -10,19 +10,14 @@ import styles from "./styles.css?inline";
 import config from "~/config/dw";
 import {CAT_MENU_DEFAULT_NAV_SSR_DEPTH, CAT_MENU_DEFAULT_ROOT_CATEGORY} from "~/constants";
 
-export const onGet: RequestHandler = async ({cacheControl, request}) => {
-    if (request.url.includes('/invalidate')) {
-        // Bypass any logic for invalidation requests
-        return;
-    }
-
+export const onGet: RequestHandler = async ({cacheControl}) => {
     // Control caching for this request for best performance and to reduce hosting costs:
     // https://qwik.dev/docs/caching/
     const cacheConfig = {
         // Always serve a cached response by default, up to a week stale
         staleWhileRevalidate: 60 * 60 * 24 * 7,
-        // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
-        maxAge: 5,
+        // Max once every 1 hour, revalidate on the server to get a fresh version of this page
+        maxAge: 60 * 60,
     };
 
     cacheControl(cacheConfig);
