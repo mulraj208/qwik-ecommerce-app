@@ -1,21 +1,31 @@
-import {component$, Resource, useResource$,} from "@builder.io/qwik";
-import { type DocumentHead, useLocation } from "@builder.io/qwik-city";
+import {component$} from "@builder.io/qwik";
+import {type DocumentHead, routeLoader$} from "@builder.io/qwik-city";
 import {fetchProductData} from "~/utils/fetch-product-data";
 import {ProductView} from "~/routes/product/[productId]/product-view";
 
+export const useProductData = routeLoader$(async ({cacheControl, params: { productId }}) => {
+    const cacheConfig = {
+        // Cache for 1 hour
+        maxAge: 3600,
+        // Revalidate stale data
+        staleWhileRevalidate: 3600,
+    }
+
+    // Set caching policies
+    cacheControl(cacheConfig);
+    cacheControl(cacheConfig, "CDN-Cache-Control");
+    cacheControl(cacheConfig, "Vercel-CDN-Cache-Control");
+
+    return await fetchProductData(productId) as CommerceSDK.Product$0;
+});
+
 export default component$(() => {
-    const { params: { productId } } = useLocation();
-    const productResource = useResource$(async () => await fetchProductData(productId));
+    const productData = useProductData();
 
     return (
         <div class="bg-gray-100">
             <div class="container container-center">
-                <Resource
-                    value={productResource}
-                    onPending={() => <p>Loading...</p>}
-                    onResolved={(productData) => (<ProductView productData={productData} />)}
-                    onRejected={(error) => <p>Error: {error.message}</p>}
-                />
+                <ProductView productData={productData.value} />
             </div>
         </div>
     );

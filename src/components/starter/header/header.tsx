@@ -7,7 +7,13 @@ export interface levelZeroCategoriesQuery {
   categories: Array<CommerceSDK.Category>
 }
 
-export default component$(() => {
+interface HeaderProps {
+  categories: Array<CommerceSDK.Category>
+}
+
+export default component$((props: HeaderProps) => {
+  const {categories} = props;
+
   return (
     <header class="px-3 lg:px-8 sticky top-0 z-10 bg-white shadow-lg text-black flex items-center lg:min-h-[60px]">
       <div class="max-w-[75rem] mx-auto w-full">
@@ -19,7 +25,7 @@ export default component$(() => {
             </Link>
           </div>
 
-          <CategoryMenu />
+          <CategoryMenu categories={categories} />
 
           <div class="py-3 lg:py-0 lg:ml-auto">
             <input
