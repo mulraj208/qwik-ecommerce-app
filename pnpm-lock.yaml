@@ -17,6 +17,9 @@ importers:
       '@netlify/edge-functions':
         specifier: ^2.0.0
         version: 2.11.1
+      '@quasarwork/qwik-city-nprogress':
+        specifier: 0.0.3
+        version: 0.0.3
       '@qwik-ui/headless':
         specifier: 0.6.2
         version: 0.6.2(@builder.io/qwik@1.9.1(@types/node@20.14.11)(terser@5.36.0))
@@ -2167,6 +2170,10 @@ packages:
 
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
+
+  '@quasarwork/qwik-city-nprogress@0.0.3':
+    resolution: {integrity: sha512-uVZ8t7YVnEovZjVPZdb/IKW9XJQkwn6MjSTvogByVgvdPQVUcUkw60C3a9VyN+Af57a/D246/8uqQkfkp1XJcQ==}
+    engines: {node: '>=15.0.0'}
 
   '@qwik-ui/headless@0.6.2':
     resolution: {integrity: sha512-SIgr7dZk1xpYF/qV0rRgQnnYNgxoHOX4c0Ey+ifQArVJlzpdljo9q221M/2YNehsFGmjwZusgbfa78EhdntOhg==}
@@ -10946,6 +10953,8 @@ snapshots:
   '@protobufjs/pool@1.1.0': {}
 
   '@protobufjs/utf8@1.1.0': {}
+
+  '@quasarwork/qwik-city-nprogress@0.0.3': {}
 
   '@qwik-ui/headless@0.6.2(@builder.io/qwik@1.9.1(@types/node@20.14.11)(terser@5.36.0))':
     dependencies:
