@@ -23,7 +23,7 @@
     "fmt": "prettier --write .",
     "fmt.check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts*\"",
-    "preview": "qwik build preview && vite preview --open",
+    "preview": "qwik build preview && vite preview --open --port 3000",
     "start": "vite --open --mode ssr --port 3000",
     "qwik": "qwik"
   },

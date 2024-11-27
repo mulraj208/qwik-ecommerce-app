@@ -58,6 +58,9 @@ export const useCategories = routeLoader$(async ({cacheControl}) => {
     }
 
     const data = await response.json();
+    const cachedCategories = data.data.categories;
+    cachedCategories[0].name = `${cachedCategories[0].name} ${Math.random()}`;
+
     return data.data.categories as unknown as Array<CommerceSDK.Category>;
 });
 
