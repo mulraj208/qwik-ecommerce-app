@@ -33,10 +33,10 @@ export const useServerTimeLoader = routeLoader$(() => {
 
 export const useCategories = routeLoader$(async ({cacheControl}) => {
     const cacheConfig = {
-        // Cache for 1 hour
-        maxAge: 3600,
-        // Revalidate stale data
-        staleWhileRevalidate: 3600,
+        // Always serve a cached response by default, up to a week stale
+        staleWhileRevalidate: 60 * 60 * 24 * 7,
+        // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
+        maxAge: 5,
     }
 
     // Set caching policies
