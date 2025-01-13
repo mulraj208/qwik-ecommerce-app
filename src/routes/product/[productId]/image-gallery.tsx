@@ -48,7 +48,7 @@ export const ImageGallery = component$((props: ImageGalleryProps) => {
                 <div class="mb-2">
                     <div class="aspect-square relative overflow-hidden">
                         <Image
-                            src={heroImage.disBaseLink || heroImage.link}
+                            src={`${heroImage.disBaseLink || heroImage.link}?q=80`}
                             alt={heroImage.alt || product.name || 'Image'}
                             width={480}
                             height={480}
@@ -74,7 +74,7 @@ export const ImageGallery = component$((props: ImageGalleryProps) => {
                                 }}
                             >
                                 <img
-                                    src={image.disBaseLink || image.link}
+                                    src={`${image.disBaseLink || image.link}?q=80`}
                                     alt={image.alt || ''}
                                     loading={loadingStrategy}
                                     width={94}

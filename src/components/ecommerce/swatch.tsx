@@ -26,7 +26,7 @@ export const Swatch = component$((props: SwatchProps) => {
                     alt={image.alt || ''}
                     height={36}
                     width={36}
-                    src={image.disBaseLink || image.link}
+                    src={`${image.disBaseLink || image.link}?q=80`}
                     class="rounded-full h-9 w-9"
                 />
             ) : (
